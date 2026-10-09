@@ -18,7 +18,7 @@ def make_task(issue: int, task_id: str, branch: str) -> TaskSpec:
     value.update(
         {
             "issue_number": issue,
-            "issue_url": f"https://github.com/NhanDuong21/nyan-shop-bot/issues/{issue}",
+            "issue_url": f"https://github.com/nyanduong/nyan-shop-bot/issues/{issue}",
             "task_id": task_id,
             "branch": branch,
         }

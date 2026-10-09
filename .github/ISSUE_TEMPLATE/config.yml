@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: Security-sensitive report
-    url: https://github.com/NhanDuong21/nyan-shop-bot/security/advisories/new
+    url: https://github.com/nyanduong/nyan-shop-bot/security/advisories/new
     about: Do not put credentials or exploitable details in a public issue.

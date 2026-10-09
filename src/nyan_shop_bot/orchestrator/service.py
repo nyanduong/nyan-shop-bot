@@ -1990,8 +1990,8 @@ string assertions whose quoting or Markdown punctuation can create false failure
         return False
 
     def authorize_auto_merge(self, repository: str, confirmation: str) -> None:
-        if repository != "NhanDuong21/nyan-shop-bot":
-            raise RuntimeError("authorization is scoped only to NhanDuong21/nyan-shop-bot")
+        if repository != "nyanduong/nyan-shop-bot":
+            raise RuntimeError("authorization is scoped only to nyanduong/nyan-shop-bot")
         del confirmation
         raise RuntimeError(AUTO_MERGE_BLOCKER)
 
