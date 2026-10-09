@@ -12,7 +12,7 @@ from typing import Any
 from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
-REPOSITORY = "NhanDuong21/nyan-shop-bot"
+REPOSITORY = "nyanduong/nyan-shop-bot"
 
 LABELS: dict[str, tuple[str, str]] = {
     "agent:coordinator": ("5319e7", "Coordinator-owned work"),

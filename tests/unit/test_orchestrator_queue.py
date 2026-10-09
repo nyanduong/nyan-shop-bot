@@ -11,7 +11,7 @@ def task(task_id: str, issue: int, phase: str, dependencies: list[int]) -> TaskS
         {
             "task_id": task_id,
             "issue_number": issue,
-            "issue_url": f"https://github.com/NhanDuong21/nyan-shop-bot/issues/{issue}",
+            "issue_url": f"https://github.com/nyanduong/nyan-shop-bot/issues/{issue}",
             "branch": f"nyan/{task_id.lower()}-queue-test",
             "queue_phase": phase,
             "queue_eligible": phase != "demo",

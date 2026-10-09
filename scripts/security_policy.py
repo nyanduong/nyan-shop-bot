@@ -133,7 +133,7 @@ def check_workflows() -> list[str]:
             if publish_permissions != {"contents": "read", "packages": "write"}:
                 findings.append(f"{path.name}: publish permissions must be minimal")
             condition = str(publish.get("if", ""))
-            for required in ("push", "refs/heads/main", "NhanDuong21/nyan-shop-bot"):
+            for required in ("push", "refs/heads/main", "nyanduong/nyan-shop-bot"):
                 if required not in condition:
                     findings.append(f"{path.name}: publish condition missing {required!r}")
     return findings

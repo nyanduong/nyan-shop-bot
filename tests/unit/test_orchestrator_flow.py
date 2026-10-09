@@ -204,11 +204,11 @@ def test_blocked_exact_head_ci_can_resume_into_same_writer_session(
         phase=RunPhase.BLOCKED,
         head_sha=current_head,
         pr_number=24,
-        pr_url="https://github.com/NhanDuong21/nyan-shop-bot/pull/24",
+        pr_url="https://github.com/nyanduong/nyan-shop-bot/pull/24",
         worker_session_id="same-worker-session",
         last_error=(
             f"required CI failed for {current_head}: ['ci-gate'] "
-            "(https://github.com/NhanDuong21/nyan-shop-bot/actions/runs/9001)"
+            "(https://github.com/nyanduong/nyan-shop-bot/actions/runs/9001)"
         ),
         ended_at="2026-09-19T12:00:00+00:00",
     )
@@ -223,7 +223,7 @@ def test_blocked_exact_head_ci_can_resume_into_same_writer_session(
             assert frozen_task == task
             assert kwargs == {
                 "pr_number": 24,
-                "expected_url": "https://github.com/NhanDuong21/nyan-shop-bot/pull/24",
+                "expected_url": "https://github.com/nyanduong/nyan-shop-bot/pull/24",
                 "head_sha": current_head,
             }
 
@@ -232,7 +232,7 @@ def test_blocked_exact_head_ci_can_resume_into_same_writer_session(
             raise CiFailed(
                 head_sha=current_head,
                 run_id=9001,
-                run_url="https://github.com/NhanDuong21/nyan-shop-bot/actions/runs/9001",
+                run_url="https://github.com/nyanduong/nyan-shop-bot/actions/runs/9001",
                 failed_checks=["ci-gate"],
                 failed_jobs=["Admin lint, typecheck, test, and build", "ci-gate"],
                 diagnostic_excerpt="error TS2322: Type string is not assignable to type mock",
@@ -291,7 +291,7 @@ def test_ci_fix_checkpoint_rolls_back_without_consuming_a_round(
     failure = CiFailed(
         head_sha=current_head,
         run_id=9002,
-        run_url="https://github.com/NhanDuong21/nyan-shop-bot/actions/runs/9002",
+        run_url="https://github.com/nyanduong/nyan-shop-bot/actions/runs/9002",
         failed_checks=["ci-gate"],
         failed_jobs=["Admin lint, typecheck, test, and build", "ci-gate"],
     )
@@ -342,7 +342,7 @@ def test_ci_failure_handoff_rejects_changed_worktree_head(tmp_path: Path) -> Non
     failure = CiFailed(
         head_sha=current_head,
         run_id=9003,
-        run_url="https://github.com/NhanDuong21/nyan-shop-bot/actions/runs/9003",
+        run_url="https://github.com/nyanduong/nyan-shop-bot/actions/runs/9003",
         failed_checks=["ci-gate"],
         failed_jobs=["ci-gate"],
     )
@@ -388,7 +388,7 @@ def test_ci_fix_checkpoint_cas_preserves_concurrent_owner_control(
     failure = CiFailed(
         head_sha=current_head,
         run_id=9004,
-        run_url="https://github.com/NhanDuong21/nyan-shop-bot/actions/runs/9004",
+        run_url="https://github.com/nyanduong/nyan-shop-bot/actions/runs/9004",
         failed_checks=["ci-gate"],
         failed_jobs=["ci-gate"],
     )
@@ -589,7 +589,7 @@ def test_ui_findings_return_to_same_antigravity_conversation(
         {
             "task_id": "NSB-014",
             "issue_number": 6,
-            "issue_url": "https://github.com/NhanDuong21/nyan-shop-bot/issues/6",
+            "issue_url": "https://github.com/nyanduong/nyan-shop-bot/issues/6",
             "branch": "nyan/nsb-014-ui-fix-fixture",
             "worker": "antigravity",
             "worker_model": "gemini-3.8-flash-low",
@@ -1218,7 +1218,7 @@ def test_github_command_uses_remaining_deadline(
     monkeypatch.setattr("nyan_shop_bot.orchestrator.github.subprocess.run", fake_run)
     client = GitHubClient(
         tmp_path,
-        "NhanDuong21/nyan-shop-bot",
+        "nyanduong/nyan-shop-bot",
         timeout_reader=lambda: 7,
     )
 
@@ -1308,7 +1308,7 @@ def test_ci_wait_considers_only_newest_exact_sha_run(
 def test_failed_ci_diagnostics_are_redacted_deduplicated_and_bounded(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    client = GitHubClient(tmp_path, "NhanDuong21/nyan-shop-bot")
+    client = GitHubClient(tmp_path, "nyanduong/nyan-shop-bot")
     secret = "ghp_" + "abcdefghijklmnopqrstuvwxyz123456"
     duplicate = {
         "annotation_level": "failure",
@@ -1351,7 +1351,7 @@ def test_failed_ci_diagnostics_are_redacted_deduplicated_and_bounded(
 def test_failed_ci_diagnostics_stop_after_first_annotation_timeout(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    client = GitHubClient(tmp_path, "NhanDuong21/nyan-shop-bot")
+    client = GitHubClient(tmp_path, "nyanduong/nyan-shop-bot")
     requests: list[tuple[str, ...]] = []
 
     def timeout(*arguments: str, **kwargs: object) -> object:
@@ -1552,7 +1552,7 @@ def test_ci_failure_is_rejected_when_same_attempt_is_now_in_progress(
 def test_auto_merge_command_fails_closed_without_atomic_base_binding(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    client = GitHubClient(tmp_path, "NhanDuong21/nyan-shop-bot")
+    client = GitHubClient(tmp_path, "nyanduong/nyan-shop-bot")
     captured: tuple[str, ...] = ()
 
     def command(*arguments: str) -> str:
@@ -1582,7 +1582,7 @@ def test_owner_confirmation_cannot_mutate_github_auto_merge(
 
     with pytest.raises(RuntimeError, match="automatic merge is BLOCKED"):
         service.authorize_auto_merge(
-            "NhanDuong21/nyan-shop-bot", "explicit-but-insufficient-owner-input"
+            "nyanduong/nyan-shop-bot", "explicit-but-insufficient-owner-input"
         )
 
     assert not github_constructed
@@ -2883,7 +2883,7 @@ def test_owner_manual_merge_reconciles_exact_head(
 def test_manual_merge_rejects_retargeted_base(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    client = GitHubClient(tmp_path, "NhanDuong21/nyan-shop-bot")
+    client = GitHubClient(tmp_path, "nyanduong/nyan-shop-bot")
     monkeypatch.setattr(
         client,
         "json_command",
@@ -2947,7 +2947,7 @@ def test_antigravity_scope_violation_fixture_is_never_committed(tmp_path: Path) 
         {
             "task_id": "NSB-014",
             "issue_number": 6,
-            "issue_url": "https://github.com/NhanDuong21/nyan-shop-bot/issues/6",
+            "issue_url": "https://github.com/nyanduong/nyan-shop-bot/issues/6",
             "branch": "nyan/nsb-014-ui-scope-fixture",
             "worker": "antigravity",
             "worker_model": "gemini-3.8-flash-low",

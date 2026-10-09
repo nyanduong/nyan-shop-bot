@@ -138,7 +138,7 @@ def main(arguments: list[str] | None = None) -> int:
 
     if args.command == "start":
         if args.next:
-            task_path = service.select_next_task_path("NhanDuong21/nyan-shop-bot")
+            task_path = service.select_next_task_path("nyanduong/nyan-shop-bot")
             if task_path is None:
                 raise SystemExit("No trusted M0-M2 task has closed dependencies")
         else:

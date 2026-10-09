@@ -244,7 +244,7 @@ jobs:
       ${{ needs.ci-gate.result == 'success' &&
           github.event_name == 'push' &&
           github.ref == 'refs/heads/main' &&
-          github.repository == 'NhanDuong21/nyan-shop-bot' }}
+          github.repository == 'nyanduong/nyan-shop-bot' }}
     needs: [ci-gate]
     runs-on: ubuntu-latest
     timeout-minutes: 25
@@ -273,7 +273,7 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ghcr.io/nhanduong21/nyan-shop-bot-api:${{ github.sha }}
+          tags: ghcr.io/nyanduong/nyan-shop-bot-api:${{ github.sha }}
           labels: |
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
@@ -284,7 +284,7 @@ jobs:
           context: admin
           file: admin/Dockerfile
           push: true
-          tags: ghcr.io/nhanduong21/nyan-shop-bot-admin:${{ github.sha }}
+          tags: ghcr.io/nyanduong/nyan-shop-bot-admin:${{ github.sha }}
           labels: |
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
             org.opencontainers.image.revision=${{ github.sha }}
